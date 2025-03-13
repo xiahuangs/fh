@@ -36,7 +36,7 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'./js/api/images/cy.jpg': 'full'
+							'cy.jpg': 'full'
 						},
 
 					// Delay.
