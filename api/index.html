@@ -1,214 +1,231 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>推荐使用浏览器打开</title>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta name="format-detection" content="telephone=no">
-    <meta content="false" name="twcClient" id="twcClient">
-    <meta name="aplus-touch" content="1">
-    <script src="https://cdn.staticfile.org/jquery/1.12.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <title>休闲娱乐中心 | 亲友娱乐平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        @media screen and (max-width: 750px) {
-            body {
-                padding: 5px; 
-            }
-            .page-container {
-                width: 100%;
-                font-size: 13px;
-            }
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --text-color: #2D3436;
         }
 
-        #browser img {
-            width: 50px;
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
         }
-        #browser {
-            margin: 0 10px;
+
+        /* 顶部引导条优化 */
+        .browser-guide {
+            background: rgba(255,107,107,0.9);
+            padding: 1rem;
             text-align: center;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        #contens {
-            color: #2466f4;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 900;
-        }
-        @media screen and (max-width: 768px) {
-            body {
-                font-weight: 700;
-            }
-        }
-        .top-bar-guidance {
-            font-size: 20px;
-            color: #fff;
-            background: url('images/banner.png') center center no-repeat;
-            background-size: cover;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transform-origin: center top;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .top-bar-guidance .icon-safari {
-            width: 25px;
-            height: 25px;
+        .browser-guide img {
+            width: 20px;
             vertical-align: middle;
             margin: 0 5px;
-            position: relative;
-            top: -1px;
         }
-        .top-bar-guidance p {
-            display: block;
-            margin: 0;
-            white-space: nowrap;
-            position: relative;
-            letter-spacing: 1.6px;
-            line-height: 1.8;
-            padding: 0;
-            margin-left: -50px;
+
+        /* 主内容容器 */
+        .main-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
-        .app-download-tip {
-            margin: 0 auto;
-            text-align: center;
-            font-size: 18px;
-            background: #F2F2F2;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        .app-download-tip .guidance-desc {
-            background-color: #fff;
-            padding: 0 5px;
-        }
-        .app-download-tip .icon-sgd {
-            width: 25px;
-            height: 25px;
-            vertical-align: middle;
-        }
-        .app-download-btn {
+
+        /* 品牌标识 */
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--primary-color);
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            width: 300px;
+            justify-content: center;
+        }
+        .brand-logo svg {
+            width: 40px;
             height: 40px;
-            margin: 18px auto 0;
-            font-size: 18px;
-            color: #fff;
-            background-color: #2466f4;
-            border-radius: 20px;
+            fill: white;
+        }
+
+        /* 内容排版优化 */
+        .content-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        /* 链接展示框 */
+        .link-box {
+            background: rgba(78,205,196,0.1);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            word-break: break-all;
+            border: 2px dashed var(--secondary-color);
+        }
+
+        /* 统一按钮样式 */
+        .action-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
             border: none;
-            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .app-download-btn:hover {
-            background-color: #1a4fc7;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(36, 102, 244, 0.2);
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
-        .url-box {
-            background: #F2F2F2;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+
+        /* 提示信息样式 */
+        .alert-text {
+            color: #ff4444;
+            margin: 1rem 0;
+            padding: 0.8rem;
+            background: rgba(255,68,68,0.1);
+            border-radius: 8px;
         }
-        .url {
-            color: #333;
-            font-size: 20px;
-            font-weight: bold;
-            word-break: break-all;
+
+        /* 新增父容器样式 */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* 按钮之间的间距 */
         }
-        .copy-tip {
-            text-align: center;
-            color: #4da663;
-            font-size: 16px;
-            margin-top: 30px;
-            transition: opacity 0.5s ease-out;
+
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .main-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="page-container">
-        <div class="top-bar-guidance">
-            <p>点击右上角<img src="images/dian.png" class="icon-safari">在浏览器打开</p>
-            <p>苹果<img src="images/iphone.png" class="icon-safari">安卓设备<img src="images/android.png" class="icon-safari">↗↗↗</p>
+    <div class="browser-guide">
+        <p>点击右上角 <img src="//gw.alicdn.com/tfs/TB1xwiUNpXXXXaIXXXXXXXXXXXX-55-55.png"> Safari打开继续访问</p>
+    </div>
+
+    <div class="main-container">
+        <div class="brand-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
         </div>
-        <div id="contens">
-            <p style="margin-top: 50px;">1.本站不支持 微信或QQ 内访问</p>
-            <p style="margin-bottom: 50px;">2.请按提示在手机浏览器打开体验更好</p>
-        </div>
-        <div id="tips">
-            <div class="url-box">
-                <div class="url" id="targetUrl"></div>
-            </div>
-            <div class="app-download-tip">
-                <span class="">点击右上角<img src="images/dian.png" class="icon-sgd"> 或复制网址自行打开</span>
-            </div>
-            <button class="app-download-btn" id="copyBtn">点此复制本站网址</button>
+
+        <div class="content-section" id="tips">
+            <!-- 默认显示跳转状态 -->
+            <h1>正在跳转...</h1>
+            <p class="alert-text">温馨提醒：休闲游戏，切勿着迷！</p>
+            <p><b style="color:var(--primary-color);">❤️联盟号：15856673❤️</b></p>
         </div>
     </div>
 
     <script>
-    var url = document.location.toString();
-    var urlParmStr = url.slice(url.indexOf('=') + 1);
-    var ua = navigator.userAgent.toLowerCase();
-    var isQQ = ua.indexOf('qq') != -1;
-    var isWeixin = ua.indexOf('micromessenger') != -1;
+        // 平台检测逻辑
+        var url = document.location.toString();
+        var urlParmStr = url.slice(url.indexOf('=') + 1);
+        var ua = navigator.userAgent.toLowerCase();
+        
+        // 平台检测
+        var isQQ = ua.indexOf('qq/') !== -1;
+        var isWeixin = ua.indexOf('micromessenger') !== -1;
+        var isDouyin = ua.indexOf('douyin') !== -1 || ua.indexOf('aweme') !== -1;
+        var isKuaishou = ua.indexOf('kuaishou') !== -1 || ua.indexOf('kwai') !== -1;
 
-    if (urlParmStr === url) {
-        urlParmStr = "baidu.com"; // 设置默认目标网站 URL
-    }
+        // 提示模板
+        var notice_openBrowser = `
+            <h1>请在浏览器中打开</h1>
+            <p class="alert-text">当前页面无法在当前环境中查看</p>
+            <div class="alert-text">
+                <b>方法一：</b>点击右上角三个点 → 在浏览器中打开<br>
+                <b style="color:var(--primary-color);">❤️联盟号填写15856673❤️</b>
+            </div>
+            <div class="alert-text">
+                <b>方法二：</b>复制下方链接到浏览器打开
+            </div>
+            <div class="link-box">
+                ${decodeURIComponent(urlParmStr)}
+            </div>
+            <div class="button-container">
+                <button class="action-button" onclick="copyLink()">
+                    <svg style="width:20px;fill:white" viewBox="0 0 24 24">
+                        <path d="M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12V1z"/>
+                    </svg>
+                    复制链接
+                </button>
+                <button class="action-button" onclick="openBaidu()">
+                    1毛1分
+                </button>
+            </div>
+            <p class="alert-text" style="margin-top:1.5rem;">
+                娱乐项目：扎金花、红中、妞妞、三公、比跑快、德州等
+            </p>
+            <p class="alert-text" style="margin-top:1.5rem;">
+                注意事项：本页面下载的是1块1分，要1毛1分的点击文字上方的1毛1分下载
+            </p>
+        `;
 
-    var decodedUrl = decodeURIComponent(urlParmStr);
-    document.getElementById('targetUrl').textContent = decodedUrl;
-
-    if (!isWeixin && !isQQ) {
-        setTimeout(function() {
-            location.href = decodedUrl;
-        }, 500);
-    }
-
-    document.getElementById('copyBtn').addEventListener('click', function() {
-        // 检查是否已存在提示
-        var existingTip = document.querySelector('.copy-tip');
-        if (existingTip) {
-            return;
-        }
-
-        var textArea = document.createElement("textarea");
-        textArea.value = decodedUrl;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            document.execCommand('copy');
-            var tipDiv = document.createElement('div');
-            tipDiv.className = 'copy-tip';
-            tipDiv.textContent = '复制成功，请在浏览器中打开！';
-            document.querySelector('.app-download-btn').after(tipDiv);
-            
+        // 逻辑处理
+        if (isWeixin || isQQ || isDouyin || isKuaishou) {
+            document.getElementById("tips").innerHTML = notice_openBrowser;
+        } else {
+            if (urlParmStr === url) {
+                urlParmStr = "http://d4805.dfhdh53.com/K3n9T";
+            }
             setTimeout(function() {
-                tipDiv.style.opacity = '0';
-                setTimeout(function() {
-                    tipDiv.remove();
-                }, 500);
-            }, 3000);
-        } catch (err) {
-            alert('复制失败，请手动复制');
+                window.location.href = decodeURIComponent(urlParmStr);
+            }, 1500);
         }
-        document.body.removeChild(textArea);
-    });
+
+        // 复制功能
+        function copyLink() {
+            var url = decodeURIComponent(urlParmStr);
+            navigator.clipboard.writeText(url).then(() => {
+                alert("链接已复制，请到浏览器粘贴访问");
+            }).catch(() => {
+                const tempInput = document.createElement("input");
+                tempInput.value = url;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                alert("复制成功，请到浏览器粘贴访问");
+            });
+        }
+
+        // 打开百度功能
+        function openBaidu() {
+            window.open("https://https://https://xiachengbin.github.io/wxfh/api", "_blank");
+        }
     </script>
 </body>
 </html>
